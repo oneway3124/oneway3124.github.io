@@ -1,0 +1,89 @@
+\documentclass[]{article}
+\usepackage{hyperref}
+\usepackage[usenames, dvipsnames]{color}
+
+%opening
+\title{CSE 301: Operating Systems\\Homework 1 \\(due Noon August 15)}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\noindent\fbox{
+	\parbox{\textwidth}{
+		Instructions\\
+		\begin{enumerate}
+			\item The deadline is a hard one. The form upload will close at sharp noon August 17. There will be no extensions.
+			\item You have to type the assignment using a word processing engine, create a pdf and upload on the form. Please note that only pdf files will be accepted.
+			\item Name the submission as \texttt\{branch\}\_\{roll\_number\}\_\{name\}.pdf
+			\item All code examples must be put up as \href{https://gist.github.com/}{\textbf{secret gists}} and linked in the created pdf. Again, only secret gists. Not the public ones.
+			\item Any instances of cheating/plagiarism will not be tolerated at all. 
+			\item Cite all the pertinent references in IEEE format.
+			\item The least count of grading would be 0.5 marks. 
+			\item Some suggestions for plotting - WolframAlpha, Academo.Org, Geogebra, Matploltib, GNUplot, Matlab, Octave
+			\item You can find the course VM on the course web page. The root password is: 1234
+		\end{enumerate}
+	}
+}
+
+
+\begin{enumerate}
+	\item You are a student studying operating systems at IITGN. You hate the fact that the VM provided to you in the course does not have your username as the main user! Create a new user correspoding to your unique id, which consists of two parts - your first name and a number between 0 and 12. Obtain the latter by doing the following : (2$^\mathtt{last~three digits~of~your~roll~number})\%13$. Capture a screenshot showing the newly created user on the command line. \textbf{[One mark]}.
+	 Seems too easy?\footnote{Oh, okay. This will not be graded. But, you want to have fun, no? Can you solve this efficiecntly? Study modular exponentiation. Maybe you will realise that you do not need to compute the power of 2 and then compute the remainder.}
+	\item You are a system admin at PalajRocks. Your company provides students remote access to terminal with preset programming environment. Your friend told you about fork bomb. You're really worried. You do not want smart IITGN CSE and EE students to cause system crashes! You want to create a fool-proof system to prevent denial-of-service by a fork bomb. For the first-cut, you choose to do some tests on a VM (provided by course TAs), since you do not wish to crash your system\footnote{Does the problem sound too unrealistic? Think about CodeChef servers. Imagine if they do not have safety mechanisms in place. Someone could write a simple C fork-bomb!}. You have the following tasks:
+	\begin{enumerate}
+		\item Write a C program which creates a new process via fork() every second \textbf{[One mark}]
+		\item Capture the increase in number of processes over time (using ps). You could do it manually (inefficient) by taking a screenshot every second. Could you automate it (and create a gif?) If you create a gif, upload it on a publicly accessible location and share the URL \textbf{[One mark]}
+		\item Ok. You need to stop the C program soon enough! Do it right away! 
+		\item Figure out a mechanim by which you can cap the number of processes a user can generate. Let's keep it to 100 for now. Capture a screenshot of the command you run or the file you edit. \textbf{[One mark]}
+		\item Re-run the C program. Show that you're able to cap the processes to 100 and prevent a denial-of-service! \textbf{[One mark]}
+	\end{enumerate}
+\item You love command line arguments! Write a C program \texttt{bmi.c}, where you ask for a person's height (in meters) and weight (in pounds). An example instantiation of the program run is: \texttt{./bmi.out 1.8 200}. The output would be the BMI of the person upto two decimal places\footnote{For the curious ones, BMI is not universally accepted as an indicator for health! Also, the BMI ranges for defining obesity can vary across countries.}. Ok, this was easy. Now, modify the program such that you create a child process. Now, access the command line arguments inside the child process and do the computation there and print out the BMI. Can you access the command line arguments of the parent process in the child process? Why or why not? \textbf{[One mark]}
+
+\item You are the rockstar kernel developer at SebKhidki corporation. Yeah, your CEO could not think of a better name. Your boss is a great person. She wants to optimise the CPU scheduler. She says that instead of just optimising for average response time (RT) or for average turnaround time (TT), we wants you to minimise SKT\footnote{SebKhidki Time}, which is given by:
+
+$$SKT =  ~\alpha \times RT^2 + \beta \times TT $$
+
+Now, for the first cut she makes your job easier (or, does it become harder?).
+She tells you that the three variables ($~\alpha,  \beta, \eta $ ) each can only take integer values from \{0,1,$\cdots$100\}
+
+SebKhidki has a specific format for maintaining information about processes. For each process, there is a tuple containing the following fields $<$Process ID, Arrival Time, Length of Job, Pre-emptible or not?$>$
+
+For testing purposes, you are given the following list of processes:
+\begin{enumerate}
+	\item $<$1, 0, 10, Non pre-emptible$>$
+	\item $<$2, 0, 20, Non pre-emptible$>$
+	\item $<$3, 0, 30, Non pre-emptible$>$
+\end{enumerate}
+
+So, you have 3 processes, none of which can be interrupted. 
+
+\begin{enumerate}
+	\item Find out SKT for longest job first and shortest job first as a function of $~\alpha $ and $\beta$. Plot SKT for both these approaches as a function of $~\alpha $ and $\beta$  \textbf{[One mark]} 
+	\item Let us now assume that the three loads are pre-emptible. Each context switch takes $\tau$ timeunits. What is SKT as a function of  $~\alpha$, $\beta$ and $\tau$ for shortest time to completion algorithm? How would the SKT change if instead of $<$1, 0, 10, Pre-emptible$>$ we had 	$<$1, 10, 10, Pre-emptible$>$? \textbf{[One mark]} 
+	\item What is SKT as a function of $~\alpha$, $\beta$ and $\tau$ and $\eta$ if we run round-robin scheduling with time slice of $\eta$. Load is: $<$1, 0, 10, Pre-emptible$>$, $<$2, 0, 20, Pre-emptible$>$, $<$3, 0, 30, Non pre-emptible$>$. Fix  $~\alpha = 10$, $\beta = 5$ and $\tau=5$ and then plot SKT of round-robin as a function of $\eta$. What do you observe? \textbf{[One mark]} 
+	\item What is the default scheduler used in Linux (since v2.6.23)? Read the entire Wiki page to learn more! \textbf{[One mark]} 
+\end{enumerate}
+\end{enumerate}
+	
+	\section*{Not for grades}
+	\begin{enumerate}
+	
+			\item Can you measure the time taken for a context switch? Would \texttt{lmbench} be the right tool for this? What else can \texttt{lmbench} give you? Maybe, this is a project idea you want to explore?
+			\item Study real time scheduling from the paper entitled ``Scheduling Algorithms for Multiprogramming in a Hard Real-Time
+			Environment". Why is ``schedulability" such a challenge? Imagine being a NASA engnineer. Would schedulability matter to you now?
+			\item You might like to read the following inspiring article - \href{https://www.networkworld.com/article/2168942/servers/in-their-own-words--unix-pioneers-remember-the-good-times.html}{In their own words: Unix pioneers remember the good times}
+	\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\end{document}

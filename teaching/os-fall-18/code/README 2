@@ -1,0 +1,15 @@
+
+To compile, just do this:
+
+gcc -o p1 p1.c 
+
+Sorry, no makefile!
+
+To run, just do this:
+
+./p1
+
+Same applies for p2, p3, and p4. Amazing!
+
+
+
