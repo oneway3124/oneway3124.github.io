@@ -10,6 +10,24 @@
 <link rel="shortcut icon" href="picture/20221022.jpg" type="images/x-5b">
 <title>学者型工程师&技术转移专家</title>
 
+ <style>
+        .card {
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            padding: 10px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .card-body {
+            padding: 10px;
+            background-color: #f7f7f7;
+            display: none;
+        }
+    </style>
 
 </head>
 <body>
@@ -29,7 +47,7 @@
 <br />
 <a href="https://scholar.google.com/citations?user=QWZUnsUAAAAJ&hl=en">[Google Scholar]</a> 
 <a href="https://orcid.org/0000-0002-4997-2068">[ORCID]</a> 
-<a href="https://github.com/oneway3124">[GitHub] 
+<a href="https://github.com/oneway3124">[GitHub] </a>
 <a href="news.html">[News]</a>
 <br />
 <br />
@@ -75,7 +93,37 @@
 <p>机器学习及Python实现 [2023年秋季，已停]</p>
 <p>C++面向对象程序设计 [2026年春季，预计]</p>
 <p>嵌入式原理与设计(嵌入式linux) [2024年春季]</p>
-<p>CDIO工程实践 [2022、2023、2024年春季]</p>
+
+
+	<div class="card">
+		<div class="card-header" onclick="toggleCard(this)">
+			<p>CDIO工程实践 [2022、2023、2024年春季]</p>
+		</div>
+		<div class="card-body">
+			<p>2021级7人：板球控制系统</p>
+			<p>2021级4人：</p>
+			<p>2021级4人：</p>
+
+		</div>
+	</div>
+	<div class="card">
+        <div class="card-header" onclick="toggleCard(this)">
+            毕业设计[2023、2024年春]
+            <a href="https://jwc.cuit.edu.cn/info/1044/1908.htm">1、教务处官方版本科毕业设计（论文）格式</a>
+			<a href="download\附件4-1.（2022届新版）.SJ0202-2021版-成都信息工程大学本科毕业设计（论文）格式与内容说明-SJ.docx">2、From Liujun本科毕业设计（论文）格式</a>
+		</div>
+        <div class="card-body">
+            <p>2023:基于三维点云数据的目标检测算法软件系统设计与实现</p>
+            <p>2023:基于视觉与文本技术的看图写话系统设计与实现</p>
+            <p>2023:基于机器视觉反馈的板球运动控制系统设计与实现</p>
+            <p>2023:基于视觉技术的人数统计系统设计与实现</p>
+            <p>2024:基于yolov5的高空抛物不安全行为检测系统设计与实现  <a href="https://github.com/MOMO-RC/-yolov5-_v2">[GitHub] </a></p>
+            <p>2024:基于人脸识别的教室管理系统设计与实现 <a href="https://github.com/taoboom/Applyclassroom">[GitHub] </a></p>
+            <p>2024:面向大学生的搜题学习网站设计与实现 <a href="https://gitee.com/asbaas/lingyan---graduation-design">[Gitee] </a></p>
+            <p>2024:自平衡莱洛三角形设计与实现 <a href="https://gitee.com/chim-gx/graduation-design">[Gitee] </a></p>
+        </div>
+    </div>
+   
 
 <h2>教育经历</h2>
 
@@ -312,5 +360,19 @@
 	</div>
 </div>
 </div>
+
+
+
+	<script>
+        function toggleCard(element) {
+            var body = element.nextElementSibling;
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+            } else {
+                body.style.display = 'none';
+            }
+        }
+    </script>
+
 </body>
 </html>
